@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load widget_tweaks%}
+{% block title %} <title>Login Page</title> {% endblock %}
+
+{% block content %}
+<div class="container pt-4">
+    <div class="col-lg-4 shadow mx-auto p-0 mt-4">
+        <div class="alert bg-dark text-warning">
+            <h2>Login Here</h2>
+        </div>
+        <div class=" d-flex justify-content-center p-4">
+            <form action="/login" method="post">{% csrf_token %}
+                {{ form.errors }}
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-warning text-dark">Username</span>
+                    {{ form.username | add_class:"form-control" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-warning text-dark">&ThinSpace;Password&ThinSpace;</span>
+                    {{ form.password | add_class:"form-control" }}
+                </div>
+                <hr>
+                <button class="btn btn-dark text-warning " type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
